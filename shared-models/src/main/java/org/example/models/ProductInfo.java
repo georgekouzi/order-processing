@@ -36,4 +36,13 @@ public class ProductInfo {
     public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    @Override
+    public String toString() {
+        return "ProductInfo{" +
+                "category='" + category + '\'' +
+                ", availableQuantity=" + availableQuantity +
+                ", expirationDate=" + expirationDate +
+                '}';
+    }
 }

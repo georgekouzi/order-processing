@@ -28,10 +28,10 @@ public class OrderConsumer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    @KafkaListener(topics = "orders", groupId = "inventory-group")
+    @KafkaListener(topics = Order.topic, groupId = "inventory-group")
     public void consumeOrder(Order order) {
 
-        log.info("innnnnnn Received order ={} ", order);
+        log.info("Received order ={} ", order);
 
         List<String> missingItems = validateOrder(order);
         String orderStatus = missingItems.isEmpty() ? OrderStatus.APPROVED.getStatusName() : OrderStatus.REJECTED.getStatusName();
@@ -63,7 +63,7 @@ public class OrderConsumer {
                 case DIGITAL -> {
                     //Always considered available
                 }
-                default -> missingItems.add(productId + " invalid category");
+                default -> missingItems.add(productId + " is invalid category");
             }
         }
         return missingItems;
@@ -71,7 +71,7 @@ public class OrderConsumer {
 
     private void checkForStandardMissingItems(Item item, ProductInfo product, List<String> missingItems) {
         if (product.getAvailableQuantity() < item.getQuantity()) {
-            missingItems.add(item.getProductId() + " insufficient stock");
+            missingItems.add(item.getProductId() + " is insufficient stock");
         }
 
     }
@@ -79,10 +79,11 @@ public class OrderConsumer {
     private void checkForPerishableMissingItems(Item item, ProductInfo product, List<String> missingItems) {
         if (product.getExpirationDate() != null &&
                 product.getExpirationDate().isBefore(LocalDate.now())) {
-            missingItems.add(item.getProductId() + " expired");
+            missingItems.add(item.getProductId() + " is expired");
         } else if (product.getAvailableQuantity() < item.getQuantity()) {
-            missingItems.add(item.getProductId() + " insufficient stock");
+            missingItems.add(item.getProductId() + " is insufficient stock");
         }
 
     }
+
 }

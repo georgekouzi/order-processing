@@ -15,8 +15,4 @@ public class OrderRepository {
     public void save(Order order) {
         redisTemplate.opsForValue().set(order.getId(), order);
     }
-
-    public Order findById(String orderId) {
-        return redisTemplate.opsForValue().get(orderId);
-    }
 }

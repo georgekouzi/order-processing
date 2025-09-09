@@ -1,10 +1,11 @@
 package org.example.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.example.models.Order;
 import org.example.repositories.OrderRepository;
 import org.example.services.OrderProducer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,17 @@ public class OrderController {
     }
 
     @PostMapping
-    public String createOrder(@RequestBody Order order) throws JsonProcessingException {
-        orderRepository.save(order);
-        orderProducer.sendOrder(order);
-        log.info(" innnnnnn ");
-
-        return "create order!!!!!!!!";
-
+    public ResponseEntity<?> createOrder(@RequestBody Order order) {
+        log.info("New order : {}", order);
+        try {
+            orderRepository.save(order);
+            orderProducer.sendOrder(order);
+            return ResponseEntity.ok("Order created!!!");
+        } catch (Exception e) {
+            log.error("Failed to process order {}: {}", order.getId(), e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to create order. Please try again later.");
+        }
     }
+
 }
