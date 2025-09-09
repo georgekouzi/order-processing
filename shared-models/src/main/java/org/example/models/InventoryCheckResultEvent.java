@@ -4,16 +4,16 @@ import java.util.List;
 
 public class InventoryCheckResultEvent {
     private String orderId;
-    private boolean approved;
+    private String orderStatus;
     private List<String> missingItems;
 
     public InventoryCheckResultEvent() {
-        
+
     }
 
-    public InventoryCheckResultEvent(String orderId, boolean approved, List<String> missingItems) {
+    public InventoryCheckResultEvent(String orderId, String orderStatus, List<String> missingItems) {
         this.orderId = orderId;
-        this.approved = approved;
+        this.orderStatus = orderStatus;
         this.missingItems = missingItems;
     }
 
@@ -25,12 +25,12 @@ public class InventoryCheckResultEvent {
         this.orderId = orderId;
     }
 
-    public boolean isApproved() {
-        return approved;
+    public String OrderStatus() {
+        return orderStatus;
     }
 
-    public void setApproved(boolean approved) {
-        this.approved = approved;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public List<String> getMissingItems() {
