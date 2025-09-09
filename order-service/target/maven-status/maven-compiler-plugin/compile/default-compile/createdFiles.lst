@@ -1,0 +1,6 @@
+org\example\KafkaProducerConfig.class
+org\example\repositories\OrderRepository.class
+org\example\ApplicationStarter.class
+org\example\controllers\OrderController.class
+org\example\configuration\RedisConfig.class
+org\example\services\OrderProducer.class

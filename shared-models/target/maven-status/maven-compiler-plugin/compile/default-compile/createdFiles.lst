@@ -1,0 +1,5 @@
+org\example\utils\OrderStatus.class
+org\example\models\ProductInfo.class
+org\example\models\Order.class
+org\example\models\Item.class
+org\example\models\InventoryCheckResultEvent.class

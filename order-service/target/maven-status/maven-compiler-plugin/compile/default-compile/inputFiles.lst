@@ -1,0 +1,6 @@
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\ApplicationStarter.java
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\configuration\RedisConfig.java
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\controllers\OrderController.java
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\KafkaProducerConfig.java
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\repositories\OrderRepository.java
+C:\Users\97254\IdeaProjects\order-processing\order-service\src\main\java\org\example\services\OrderProducer.java

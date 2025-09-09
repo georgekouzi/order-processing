@@ -1,0 +1,10 @@
+# Maven / IntelliJ
+target/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Docker data
+kafka-data/
