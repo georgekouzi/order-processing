@@ -25,7 +25,7 @@ public class InventoryCheckResultEvent {
         this.orderId = orderId;
     }
 
-    public String OrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
@@ -39,5 +39,14 @@ public class InventoryCheckResultEvent {
 
     public void setMissingItems(List<String> missingItems) {
         this.missingItems = missingItems;
+    }
+
+    @Override
+    public String toString() {
+        return "InventoryCheckResultEvent{" +
+                "orderId='" + orderId + '\'' +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", missingItems=" + missingItems +
+                '}';
     }
 }
